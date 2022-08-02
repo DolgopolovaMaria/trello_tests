@@ -1,1 +1,4 @@
-INVALID_ID=100
+DEFAULT_HOST = "https://api.trello.com"
+
+INVALID_ID = "100"
+NONEXISTENT_ID = "62e9487bae7d240535f11111"

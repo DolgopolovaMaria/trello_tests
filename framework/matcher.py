@@ -1,7 +1,7 @@
 from hamcrest import assert_that, equal_to
 
 
-def check_board_data(actual_data, expected_data):
+def check_id_name(actual_data, expected_data):
     assert_that(
         actual_data.id, equal_to(expected_data.id),
         f'Id is {actual_data.id}'
@@ -10,13 +10,25 @@ def check_board_data(actual_data, expected_data):
         actual_data.name, equal_to(expected_data.name),
         f'Name is {actual_data.name}'
     )
+
+
+def check_board_data(actual_data, expected_data):
+    check_id_name(actual_data, expected_data)
     assert_that(
         actual_data.url, equal_to(expected_data.url),
         f'Url is {actual_data.url}'
     )
 
 
-def check_board_name(actual_data, expected_name):
+def check_list_data(actual_data, expected_data):
+    check_id_name(actual_data, expected_data)
+    assert_that(
+        actual_data.idBoard, equal_to(expected_data.idBoard),
+        f'idBoard is {actual_data.idBoard}'
+    )
+
+
+def check_name(actual_data, expected_name):
     assert_that(
         actual_data.name, equal_to(expected_name),
         f'Name is {actual_data.name}'

@@ -1,22 +1,23 @@
 import requests
 
+from framework.api.base_api import BaseAPI
 from framework.models import BoardData
+from framework.constants import DEFAULT_HOST
 
 
-class BoardAPI:
-    def __init__(self, token, key, host='https://api.trello.com'):
-        self.host = host
-        self.session = requests.Session()
-        self.auth_params = {'token': token, 'key': key}
+class BoardAPI(BaseAPI):
+    def __init__(self, token, key, host=DEFAULT_HOST):
+        super().__init__(token, key, host)
+        self.base_url = f'{self.host}/1/boards/'
 
     def get_board(self, board_id):
-        url = f'{self.host}/1/boards/{board_id}'
+        url = f'{self.base_url}{board_id}'
         response = self.session.get(url, params=self.auth_params)
         board_data = BoardData(**response.json()) if response.ok else None
         return response.status_code, board_data
 
     def create_board(self, name=None, default_labels=True):
-        url = f'{self.host}/1/boards/'
+        url = self.base_url
         data = {
             "defaultLabels": default_labels
         }
@@ -26,6 +27,6 @@ class BoardAPI:
         return response.status_code, board_data
 
     def delete_board(self, board_id):
-        url = f'{self.host}/1/boards/{board_id}'
+        url = f'{self.base_url}{board_id}'
         response = self.session.delete(url, params=self.auth_params)
         return response.status_code
