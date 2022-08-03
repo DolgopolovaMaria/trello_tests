@@ -28,6 +28,14 @@ def check_list_data(actual_data, expected_data):
     )
 
 
+def check_card_data(actual_data, expected_data):
+    check_id_name(actual_data, expected_data)
+    assert_that(
+        actual_data.idList, equal_to(expected_data.idList),
+        f'idList is {actual_data.idList}'
+    )
+
+
 def check_name(actual_data, expected_name):
     assert_that(
         actual_data.name, equal_to(expected_name),

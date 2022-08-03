@@ -49,11 +49,6 @@ class ListAPI(BaseAPI):
     def update_list(self, list_id, new_list_data):
         url = f'{self.base_url}{list_id}'
         data = asdict(new_list_data)
-        print(data)
         response = self.session.put(url, json=data, params=self.auth_params)
-        print(response)
-        print(response.request)
-        print(url)
-        print(response.request.body)
         list_data = ListData(**response.json()) if response.ok else None
         return response.status_code, list_data
