@@ -1,2 +1,2 @@
-TOKEN = 'my token'
-KEY = 'my key'
+TOKEN = ''
+KEY = ''
