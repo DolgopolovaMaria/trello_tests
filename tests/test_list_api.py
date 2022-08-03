@@ -1,8 +1,6 @@
 import pytest
-import requests
 from hamcrest import assert_that, equal_to, none
 from requests import codes
-from framework.api.board_api import BoardAPI
 from framework.matcher import check_list_data, check_status_code, check_id_name
 from framework.constants import INVALID_ID
 from framework.models import ListData

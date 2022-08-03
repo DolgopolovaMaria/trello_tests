@@ -1,5 +1,3 @@
-import requests
-
 from framework.models import ListData, BoardData, CardData
 from framework.api.base_api import BaseAPI
 from framework.constants import DEFAULT_HOST
