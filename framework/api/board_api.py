@@ -1,5 +1,3 @@
-import requests
-
 from framework.api.base_api import BaseAPI
 from framework.models import BoardData
 from framework.constants import DEFAULT_HOST
